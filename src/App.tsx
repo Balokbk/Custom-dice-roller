@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GlobalStyle } from './styles/globalStyles'
+import { GlobalStyle, AppContainer } from './styles/globalStyles'
 import Dice from './components/Dice/Dice.tsx'
 import RollButton from './components/RollButton/RollButton.tsx'
 
@@ -45,10 +45,10 @@ function App() {
     setDiceList(diceList.filter((dice) => dice.id !== id))
   }
   return (
-    <div>
+    <AppContainer>
       <GlobalStyle />
       <h1>Dice Roller</h1>
-      <button onClick={() => addDice()}>Add an dice!</button>
+      <RollButton addDice={() => addDice()}/> 
       <div>
         {diceList.map((dice) => (
           <Dice
@@ -60,8 +60,7 @@ function App() {
           />
         ))}
       </div>
-      <RollButton/>
-    </div>
+    </AppContainer>
   )
 }
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const DiceContainer = styled.div`
+    display: inline-block;
     cursor: pointer;
     transition: transform 0.2s ease, opacity 0.2s ease;
 

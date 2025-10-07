@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, styled } from 'styled-components'
 
 // #24292e
 // #2b3137
@@ -19,12 +19,19 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     body {
+        display: flex;
+        justify-content: center;
         background: #24292e;
         color: #fafbfc;
         font-family: Markin-LT, sans-serif;
     }
+`
 
-    button {
-    cursor: pointer;
-   }
+export const AppContainer = styled.div`
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
