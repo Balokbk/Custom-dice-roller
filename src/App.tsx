@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { GlobalStyle } from './styles/globalStyles'
 import Dice from './components/Dice/Dice.tsx'
+import RollButton from './components/RollButton/RollButton.tsx'
 
 import crtiFail from './assets/dice/critFail.png'
 import fail from './assets/dice/fail.png'
@@ -43,7 +44,6 @@ function App() {
   const removeDice = (id: number) => {
     setDiceList(diceList.filter((dice) => dice.id !== id))
   }
-
   return (
     <div>
       <GlobalStyle />
@@ -60,6 +60,7 @@ function App() {
           />
         ))}
       </div>
+      <RollButton/>
     </div>
   )
 }
