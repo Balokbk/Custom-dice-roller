@@ -24,14 +24,25 @@ export const GlobalStyle = createGlobalStyle`
         background: #24292e;
         color: #fafbfc;
         font-family: Markin-LT, sans-serif;
+        height: 100vh;
     }
 `
 
 export const AppContainer = styled.div`
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+`
+
+export const DicesContainer = styled.div`
+    margin-top: 150px;
+`
+
+export const ButtonCotainer = styled.div`
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
 `

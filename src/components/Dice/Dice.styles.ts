@@ -4,6 +4,7 @@ export const DiceContainer = styled.div`
     display: inline-block;
     cursor: pointer;
     transition: transform 0.2s ease, opacity 0.2s ease;
+    user-select: none;
 
     &:hover {
         transform: scale(1.1);

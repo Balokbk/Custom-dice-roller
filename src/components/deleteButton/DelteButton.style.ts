@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const RollButtonContainer = styled.button`
+export const DeleteButtonContainer = styled.button`
     background: none;
     border: none;
     padding: 0;
@@ -9,6 +9,6 @@ export const RollButtonContainer = styled.button`
 `
 
 export const Img = styled.img`
-    width: 300px;
+    width: 175px;
     height: auto;
 `

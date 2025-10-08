@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { GlobalStyle, AppContainer } from './styles/globalStyles'
+import { GlobalStyle, AppContainer, DicesContainer, ButtonCotainer } from './styles/globalStyles.ts'
 import Dice from './components/Dice/Dice.tsx'
 import RollButton from './components/RollButton/RollButton.tsx'
+import DeleteButton from './components/deleteButton/DeleteButton.tsx'
 
 import crtiFail from './assets/dice/critFail.png'
 import fail from './assets/dice/fail.png'
@@ -34,6 +35,7 @@ function App() {
   }
 
   const addDice = () => {
+    if (diceList.length >= 12) return
     const newDice: DiceData = {
       id: Date.now(),
       value: rngGerenator()
@@ -44,12 +46,17 @@ function App() {
   const removeDice = (id: number) => {
     setDiceList(diceList.filter((dice) => dice.id !== id))
   }
+
+  const removeAllDices = () => {
+    if (diceList.length === 0) return
+    setDiceList([])
+  }
+
   return (
     <AppContainer>
       <GlobalStyle />
       <h1>Dice Roller</h1>
-      <RollButton addDice={() => addDice()}/> 
-      <div>
+      <DicesContainer>
         {diceList.map((dice) => (
           <Dice
             key={dice.id}
@@ -59,7 +66,11 @@ function App() {
             onRemove={removeDice}
           />
         ))}
-      </div>
+      </DicesContainer>
+      <ButtonCotainer>
+        <DeleteButton removeAllDices={() => removeAllDices()}/>
+        <RollButton addDice={() => addDice()}/> 
+      </ButtonCotainer>
     </AppContainer>
   )
 }
