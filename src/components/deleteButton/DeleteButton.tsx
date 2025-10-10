@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { DeleteButtonContainer, Img } from './DelteButton.style.ts'
+import { DeleteButtonContainer, Img } from './DelteButton.styles.ts'
 
 import delete_icon_non_flick from '../../assets/delete_button/delete_icon_non_flick.png'
 import delete_icon_flick from '../../assets/delete_button/delete_icon_flick.png'

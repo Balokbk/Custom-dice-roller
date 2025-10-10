@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { GlobalStyle, AppContainer, DicesContainer, ButtonCotainer } from './styles/globalStyles.ts'
-import Dice from './components/Dice/Dice.tsx'
-import RollButton from './components/RollButton/RollButton.tsx'
+import Dice from './components/dice/Dice.tsx'
+import RollButton from './components/rollButton/RollButton.tsx'
 import DeleteButton from './components/deleteButton/DeleteButton.tsx'
+import DiceCounter from './components/diceCounter/DiceCounter.tsx'
 
 import crtiFail from './assets/dice/critFail.png'
 import fail from './assets/dice/fail.png'
@@ -35,7 +36,7 @@ function App() {
   }
 
   const addDice = () => {
-    if (diceList.length >= 12) return
+    if (diceList.length >= 24) return
     const newDice: DiceData = {
       id: Date.now(),
       value: rngGerenator()
@@ -56,6 +57,7 @@ function App() {
     <AppContainer>
       <GlobalStyle />
       <h1>Dice Roller</h1>
+      <DiceCounter diceList={diceList}/>
       <DicesContainer>
         {diceList.map((dice) => (
           <Dice
@@ -64,6 +66,7 @@ function App() {
             value={dice.value}
             getDiceImage={getDiceImage}
             onRemove={removeDice}
+            diceList={diceList}
           />
         ))}
       </DicesContainer>
