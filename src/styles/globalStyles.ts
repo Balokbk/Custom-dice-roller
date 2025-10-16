@@ -1,5 +1,6 @@
 import { createGlobalStyle, styled } from 'styled-components'
 
+// Collor pallette:
 // #24292e
 // #2b3137
 // #fafbfc

@@ -37,11 +37,11 @@ function App() {
 
   const addDice = () => {
     if (diceList.length >= 24) return
-    const newDice: DiceData = {
-      id: Date.now(),
-      value: rngGerenator()
-    }
-    setDiceList([...diceList, newDice])
+      const newDice: DiceData = {
+        id: Date.now(),
+        value: rngGerenator()
+      }
+      setDiceList([...diceList, newDice])
   }
 
   const removeDice = (id: number) => {
