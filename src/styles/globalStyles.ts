@@ -7,7 +7,7 @@ import { createGlobalStyle, styled } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'Markin-LT';
-        src: url('src/fonts/Markin-LT-Ultra-Bold.ttf') format('truetype');
+        src: url('/fonts/Markin-LT-Ultra-Bold.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
     }
