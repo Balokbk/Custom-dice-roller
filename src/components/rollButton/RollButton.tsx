@@ -1,4 +1,4 @@
-import { useState} from 'react'
+import { useState } from 'react'
 import { RollButtonContainer, Img } from './RollButton.styles.ts'
 
 import roll_button_non_flick from '../../assets/button/roll_button_non_flick.png'

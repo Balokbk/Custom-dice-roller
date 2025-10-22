@@ -1,57 +1,57 @@
-import { useState, useEffect } from 'react';
-
-import { CounterContainer, CounterItem, Img } from './DiceCounter.styles.ts';
-
-import critFail from '../../assets/dice/critFail.png'
-import fail from '../../assets/dice/fail.png'
-import success from '../../assets/dice/success.png'
-import critSuccess from '../../assets/dice/critSuccess.png'
+import { useState, useEffect } from 'react'
+import { CounterContainer, CounterItem, Img } from './DiceCounter.styles.ts'
+import type { DiceFaceMap } from '../../data/diceSets.ts'
 
 type DiceCounterProps = {
     diceList: { id: number; value: number }[];
+    diceSets: {
+        name: string;
+        faces: DiceFaceMap;
+        faceNames: DiceFaceMap;
+    }
 }
 
-export default function DiceCounter({ diceList }: DiceCounterProps){
-    const[count, setCount] = useState({ cf: 0, f: 0, s:0, cs:0 })
-    
-    useEffect(() => {
-        let cf = 0, f = 0, s = 0, cs = 0
+export default function DiceCounter({ diceList, diceSets }: DiceCounterProps) {
+  const [count, setCount] = useState<Record<number, number>>({ 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 })
 
-        diceList.forEach(dice => {
-            switch(dice.value){
-                case 1: cf++; break;
-                case 2:
-                case 3: f++; break;
-                case 4:
-                case 5: s++; break;
-                case 6: cs++; break;
-                default: break;
-            }
-        })
-        setCount({ cf, f, s, cs })
-    }, [diceList])
+  useEffect(() => {
+    const newCounts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 }
 
-    return (
-        <CounterContainer>
-            <CounterItem>
-                <Img src={critFail} alt='Critical Fail'/>
-                <p>{count.cf}</p>
-            </CounterItem>
-            <CounterItem>
-                <Img src={fail} alt='Fail'/>
-                <p>{count.f}</p>
-            </CounterItem>
-            <CounterItem>
-                <Img src={success} alt='Success'/>
-                <p>{count.s}</p>
-            </CounterItem>
-            <CounterItem>
-                <Img src={critSuccess} alt='Critical Success'/>
-                <p>{count.cs}</p>
-            </CounterItem>
-            <CounterItem>
-                <p>Total: {count.cf + count.f + count.s + count.cs}</p>
-            </CounterItem>
-        </CounterContainer>
-    )
+    diceList.forEach((dice) => {
+        newCounts[dice.value as keyof DiceFaceMap]++
+    });
+
+    setCount(newCounts);
+  }, [diceList]);
+
+  const mergedCounts: Record<string, { img: string, total: number }> = {};
+  (Object.keys(count) as unknown as (keyof DiceFaceMap)[]).forEach((faceValue) => {
+    const name = diceSets.faceNames[faceValue]
+    const img = diceSets.faces[faceValue]
+    const total = count[faceValue] || 0
+
+    if(mergedCounts[name]){
+        mergedCounts[name].total += total
+    } else {
+        mergedCounts[name] = { img, total }
+    }
+  })
+  
+  const total = Object.values(mergedCounts).reduce((sum, item) => sum + item.total, 0)
+
+  return (
+    <CounterContainer>
+      {Object.entries(mergedCounts).map(([name, data]) => (
+        <CounterItem key={name}>
+          <Img src={data.img} alt={name} />
+          <p>{name}</p>
+          <div>{data.total}</div>
+        </CounterItem>
+      ))}
+      <CounterItem>
+        <p style={{ marginLeft: '46px' }}>Total</p>
+        <div>{total}</div>
+      </CounterItem>
+    </CounterContainer>
+  );
 }

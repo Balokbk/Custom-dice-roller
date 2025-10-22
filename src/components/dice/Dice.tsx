@@ -19,7 +19,7 @@ export default function Dice({ id, value, onRemove, getDiceImage, diceList }: Di
 
     return(
         <DiceContainer onClick={() => onRemove(id)}>
-            <DiceImage src={getDiceImage(value)} alt={`Dice ${value}`} diceCount={diceList.length} isRolling={isRolling}/>
+            <DiceImage src={getDiceImage(value)} alt={`Dice ${value}`} $diceCount={diceList.length} $isRolling={isRolling}/>
         </DiceContainer>
     )
 }

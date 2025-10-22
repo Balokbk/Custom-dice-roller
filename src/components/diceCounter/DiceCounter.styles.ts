@@ -7,7 +7,7 @@ export const CounterContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: left;
-    width: 120px;
+    width: 200px;
     height: auto 0;
     padding: 10px;
     gap: 10px;
@@ -21,10 +21,15 @@ export const CounterItem = styled.div`
     flex-direction: row;
     align-items: left;
     color: white;
+    font-size: 16px;
 
     p {
         margin-left: 15px;
-        font-size: 20px;
+    }
+    div {
+        position: absolute;
+        right: 0;
+        margin-right: 15px;
     }
 `
 

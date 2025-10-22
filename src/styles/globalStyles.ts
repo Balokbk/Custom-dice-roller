@@ -43,7 +43,16 @@ export const DicesContainer = styled.div`
 
 export const ButtonCotainer = styled.div`
     position: fixed;
-    bottom: 10px;
+    display: flex;
+    bottom: -40px;
     width: 100%;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+`
+
+export const Footer = styled.div`
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
 `
